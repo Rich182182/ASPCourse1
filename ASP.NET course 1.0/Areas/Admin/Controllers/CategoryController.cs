@@ -70,13 +70,13 @@ namespace ASPRich.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            Category categoryFromDb = _unitOfWork.Category.Get(cat => cat.Id == id);
-            if (categoryFromDb == null)
+            Category productFromDb = _unitOfWork.Category.Get(cat => cat.Id == id);
+            if (productFromDb == null)
             {
                 return NotFound();
             }
 
-            return View(categoryFromDb);
+            return View(productFromDb);
         }
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)

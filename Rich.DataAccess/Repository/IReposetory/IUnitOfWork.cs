@@ -9,6 +9,7 @@ namespace Rich.DataAccess.Repository.IReposetory
     public interface IUnitOfWork
     {
         ICategoryRepository Category{ get; }
+        IProductRepository Product{ get; }
         void Save();
     }
 }

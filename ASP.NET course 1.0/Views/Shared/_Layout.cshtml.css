@@ -10,8 +10,14 @@ a.navbar-brand {
 a {
   color: #0077cc;
 }
-
-.btn-primary {
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+}
+    .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
