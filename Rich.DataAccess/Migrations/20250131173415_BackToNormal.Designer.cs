@@ -12,8 +12,8 @@ using Rich.DataAccess.Data;
 namespace Rich.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250130170652_newValuesForUserRegister")]
-    partial class newValuesForUserRegister
+    [Migration("20250131173415_BackToNormal")]
+    partial class BackToNormal
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -428,8 +428,9 @@ namespace Rich.DataAccess.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });

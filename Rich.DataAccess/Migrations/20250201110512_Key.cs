@@ -5,7 +5,7 @@
 namespace Rich.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class againTraing : Migration
+    public partial class Key : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

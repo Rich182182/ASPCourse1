@@ -5,7 +5,7 @@
 namespace Rich.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class TestAgain : Migration
+    public partial class testing : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

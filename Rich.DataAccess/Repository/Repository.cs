@@ -43,6 +43,20 @@ namespace Rich.DataAccess.Repository
             }
             return query.ToList();
         }
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter, string? includeProperties = null)
+        {
+            IQueryable<T> query = dbSet;
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties
+                    .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
+            query = query.Where(filter);
+            return query.ToList();
+        }
 
         public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null)
         {

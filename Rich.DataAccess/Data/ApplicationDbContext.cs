@@ -5,7 +5,7 @@ using Rich.Models;
 
 namespace Rich.DataAccess.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {   
@@ -14,6 +14,9 @@ namespace Rich.DataAccess.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -24,6 +27,11 @@ namespace Rich.DataAccess.Data
                 new Category { Id = 4, Name = "Historry", DisplayOrder = 4 },
                 new Category { Id = 5, Name = "Romance", DisplayOrder = 5 }
                 );
+            modelBuilder.Entity<Company>().HasData(
+               new Company { Id = 1, Name = "Apple", Address= "USA", PhoneNumber = "1676543423", City = "NewYork", Region = "Center" },
+               new Company { Id = 2, Name = "Asus", Address = "China", PhoneNumber = "52676543423", City = "Honkong", Region = "Center" },
+               new Company { Id = 3, Name = "Nau", Address = "Ukraine", PhoneNumber = "0676543423", City = "Kyiv", Region = "Center" }
+               );
             modelBuilder.Entity<Product>().HasData(
                 new Product
                 {

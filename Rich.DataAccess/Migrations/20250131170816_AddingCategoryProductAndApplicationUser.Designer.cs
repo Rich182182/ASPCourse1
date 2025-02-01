@@ -12,8 +12,8 @@ using Rich.DataAccess.Data;
 namespace Rich.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250130175044_UpdatesToApplicationUser")]
-    partial class UpdatesToApplicationUser
+    [Migration("20250131170816_AddingCategoryProductAndApplicationUser")]
+    partial class AddingCategoryProductAndApplicationUser
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
