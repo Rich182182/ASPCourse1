@@ -4,6 +4,8 @@ using System.Diagnostics;
 using Rich.DataAccess.Repository.IReposetory;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Rich.Utility;
+using Microsoft.AspNetCore.Http;
 
 namespace ASPRich.Areas.Customer.Controllers
 {
@@ -21,6 +23,7 @@ namespace ASPRich.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
+            
             IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties:"Category");
             return View(productList);
         }
@@ -55,15 +58,13 @@ namespace ASPRich.Areas.Customer.Controllers
             {
                 _unitOfWork.ShoppingCart.Add(cart);
                 _unitOfWork.Save();
+                HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart
+                .GetAll(u => u.ApplicationUserId == userId).Count());
+                
                 return RedirectToAction(nameof(Index));
             }
             
 
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
